@@ -1,0 +1,57 @@
+
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <cstdlib>
+//
+//using std::string
+//
+using namespace std;
+
+
+int maior(int l[],int n){
+    int k = l[0];
+    for(int i = 0;i< n;i++){
+        if(l[i] > k){
+            k = l[i];
+        }
+    }
+    return k;
+}
+
+void countingSort(int l[],int n){
+    int m = maior(l,n)+1;
+    int* a = new int[m];
+    for(int i = 0;i < m;i++){
+        a[i] = 0;
+    }
+    for(int i = 0;i < n;i++){
+        a[l[i]]++;
+    }
+    int p = 0;
+    for(int i = 0;i < m;i++){
+        if(a[i] != 0){
+            for(int j = 0;j < a[i];j++){
+                l[p] = i;
+                p+=j;
+            }
+            p++;
+        }
+    }
+}
+
+int main(){
+    /*\n;||(or) e &&(and)*/
+    int n = 5;
+    int l[n] = {7,5,3,4,2};
+    countingSort(l,n);
+    for(int i = 0;i < n;i++){
+        printf("%d",l[i]);
+    }
+
+
+
+
+
+return 0;
+ }
